@@ -1,2 +1,4 @@
-# ipv6host
-存储客户端的IP地址和功能
+# GoFrame Template For SingleRepo
+
+Quick Start: 
+- https://goframe.org/pages/viewpage.action?pageId=1114399

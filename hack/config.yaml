@@ -1,0 +1,17 @@
+
+# CLI tool, only in development environment.
+# https://goframe.org/pages/viewpage.action?pageId=3673173
+gfcli:
+  docker:
+    build: "-a amd64 -s linux -p temp -ew"
+    tagPrefixes:
+      - my.image.pub/my-app
+
+  #dao生成
+  gen:
+    dao:
+      - link: "mysql:root:wangyuys@tcp(127.0.0.1:3306)/ipv6app?loc=Local"
+        #tables: "user"
+        removePrefix: "gf_"
+        descriptionTag: true
+        noModelComment: true
