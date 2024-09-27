@@ -14,6 +14,7 @@ type Hosts struct {
 	g.Meta      `orm:"table:gf_hosts, do:true"`
 	Id          interface{} //
 	HostId      interface{} // 主机唯一标识
+	UserId      interface{} //
 	Ipv6Address interface{} // 主机IPv6地址
 	FreePort    interface{} // 主机空闲端口
 	CreatedAt   *gtime.Time //

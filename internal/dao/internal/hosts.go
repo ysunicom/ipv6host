@@ -22,6 +22,7 @@ type HostsDao struct {
 type HostsColumns struct {
 	Id          string //
 	HostId      string // 主机唯一标识
+	UserId      string //
 	Ipv6Address string // 主机IPv6地址
 	FreePort    string // 主机空闲端口
 	CreatedAt   string //
@@ -33,6 +34,7 @@ type HostsColumns struct {
 var hostsColumns = HostsColumns{
 	Id:          "id",
 	HostId:      "host_id",
+	UserId:      "user_id",
 	Ipv6Address: "ipv6_address",
 	FreePort:    "free_port",
 	CreatedAt:   "created_at",
