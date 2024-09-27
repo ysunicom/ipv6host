@@ -8,7 +8,7 @@ import (
 type HostAddReq struct {
 	g.Meta      `path:"/backend/host/add" tags:"Host" method:"post" summary:"Add new host"`
 	HostID      string `json:"host_id" v:"required#主机唯一标识不能为空" dc:"主机唯一标识"`
-	UserID      int    `json:"user_id" v:"required#用户ID不能为空" dc:"用户ID指示该IP地址属于哪个用户"`
+	Name        string `json:"name" v:"required#用户name不能为空" dc:"通过用户名反查UserID插入表中"`
 	IPv6Address string `json:"ipv6_address" v:"required#主机IPv6地址不能为空" dc:"主机IPv6地址"`
 	FreePort    int    `json:"free_port" v:"required#主机空闲端口不能为空" dc:"主机空闲端口"`
 }
@@ -40,6 +40,7 @@ type HostUpdateReq struct {
 	g.Meta      `path:"/backend/host/update" tags:"Host" method:"post" summary:"Update host"`
 	ID          int    `json:"id" v:"min:1#请选择需要修改的主机" dc:"主机id"`
 	HostID      string `json:"host_id" v:"required#主机唯一标识不能为空" dc:"主机唯一标识"`
+	Name        string `json:"name" v:"required#用户name不能为空" dc:"通过用户名反查UserID插入表中"`
 	IPv6Address string `json:"ipv6_address" v:"required#主机IPv6地址不能为空" dc:"主机IPv6地址"`
 	FreePort    int    `json:"free_port" v:"required#主机空闲端口不能为空" dc:"主机空闲端口"`
 }

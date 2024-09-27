@@ -22,6 +22,7 @@ func (c *cHost) Create(ctx context.Context, req *backend.HostAddReq) (res *backe
 		HostCreateUpdateBase: model.HostCreateUpdateBase{
 			HostID:      req.HostID,
 			IPv6Address: req.IPv6Address,
+			Name:        req.Name,
 			FreePort:    req.FreePort,
 		},
 	})
@@ -36,6 +37,7 @@ func (c *cHost) Create(ctx context.Context, req *backend.HostAddReq) (res *backe
 			HostCreateUpdateBase: model.HostCreateUpdateBase{
 				HostID:      req.HostID,
 				IPv6Address: req.IPv6Address,
+				Name:        req.Name,
 				FreePort:    req.FreePort,
 			},
 		})
@@ -50,6 +52,7 @@ func (c *cHost) Create(ctx context.Context, req *backend.HostAddReq) (res *backe
 		HostCreateUpdateBase: model.HostCreateUpdateBase{
 			HostID:      req.HostID,
 			IPv6Address: req.IPv6Address,
+			Name:        req.Name,
 			FreePort:    req.FreePort,
 		},
 	})
@@ -71,6 +74,7 @@ func (c *cHost) Update(ctx context.Context, req *backend.HostUpdateReq) (res *ba
 		ID: req.ID,
 		HostCreateUpdateBase: model.HostCreateUpdateBase{
 			HostID:      req.HostID,
+			Name:        req.Name,
 			IPv6Address: req.IPv6Address,
 			FreePort:    req.FreePort,
 		},

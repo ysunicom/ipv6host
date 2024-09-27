@@ -10,6 +10,7 @@ import (
 
 	"github.com/gogf/gf/v2/database/gdb"
 	"github.com/gogf/gf/v2/encoding/ghtml"
+	"github.com/gogf/gf/v2/errors/gerror"
 	"github.com/gogf/gf/v2/frame/g"
 )
 
@@ -30,7 +31,25 @@ func (s *sHosts) Create(ctx context.Context, in model.HostCreateInputReq) (out m
 	if err = ghtml.SpecialCharsMapOrStruct(in); err != nil {
 		return out, err
 	}
-	lastInsertID, err := dao.Hosts.Ctx(ctx).Data(in).InsertAndGetId()
+	// 通过用户名查询 UserID
+	var admin entity.AdminInfo
+	err = dao.AdminInfo.Ctx(ctx).Where(dao.AdminInfo.Columns().Name, in.Name).Scan(&admin)
+	if err != nil {
+		return out, err
+	}
+	if admin.Id == 0 {
+		return out, gerror.New("用户不存在")
+	}
+
+	// 创建主机数据
+	hostData := g.Map{
+		"host_id":      in.HostID,
+		"user_id":      admin.Id,
+		"ipv6_address": in.IPv6Address,
+		"free_port":    in.FreePort,
+	}
+
+	lastInsertID, err := dao.Hosts.Ctx(ctx).Data(hostData).InsertAndGetId()
 	return model.HostCreateOutputRes{ID: int(lastInsertID)}, err
 }
 

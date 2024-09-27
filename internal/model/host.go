@@ -7,6 +7,7 @@ import (
 type HostCreateUpdateBase struct {
 	HostID      string
 	IPv6Address string
+	Name        string
 	FreePort    int
 }
 
