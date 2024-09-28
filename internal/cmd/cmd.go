@@ -35,16 +35,16 @@ var (
 				group.Bind(
 					hello.New(),
 					admin.New().Create,
-					host.New(),
+
 					// login.New(),
 				)
 				group.Group("/", func(group *ghttp.RouterGroup) {
-					err := gfAdminToken.Middleware(ctx, group) // 使用 gctx.New() 创建新的上下文
+					err := gfAdminToken.Middleware(ctx, group) 
 					if err != nil {
 						panic(err)
 					}
 					group.Bind(
-						
+						host.New(),
 						admin.New().List,
 						admin.New().Update,
 						admin.New().Delete,

@@ -20,6 +20,7 @@ type (
 		GetList(ctx context.Context, in model.HostGetListInputReq) (out *model.HostGetListOutputRes, err error)
 		// Update 更新主机信息
 		Update(ctx context.Context, in model.HostUpdateInputReq) (err error)
+		// Exists 检查主机是否存在
 		Exists(ctx context.Context, in model.HostCreateInputReq) (int, error)
 	}
 )

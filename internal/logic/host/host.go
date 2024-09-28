@@ -26,11 +26,14 @@ func init() {
 	service.RegisterHosts(New())
 }
 
+
+
 // Create 添加主机
 func (s *sHosts) Create(ctx context.Context, in model.HostCreateInputReq) (out model.HostCreateOutputRes, err error) {
 	if err = ghtml.SpecialCharsMapOrStruct(in); err != nil {
 		return out, err
 	}
+
 	// 通过用户名查询 UserID
 	var admin entity.AdminInfo
 	err = dao.AdminInfo.Ctx(ctx).Where(dao.AdminInfo.Columns().Name, in.Name).Scan(&admin)

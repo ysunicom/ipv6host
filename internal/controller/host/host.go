@@ -17,6 +17,7 @@ func New() *cHost {
 }
 
 func (c *cHost) Create(ctx context.Context, req *backend.HostAddReq) (res *backend.HostAddRes, err error) {
+	
 	// 检查HostID是否存在
 	exists, err := service.Hosts().Exists(ctx, model.HostCreateInputReq{
 		HostCreateUpdateBase: model.HostCreateUpdateBase{
